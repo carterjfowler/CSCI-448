@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 
 private const val LOG_TAG = "448.QuizActivity"
 private const val KEY_INDEX = "index"
+private const val KEY_SCORE = "score"
 
 class QuizActivity : AppCompatActivity() {
 
@@ -22,12 +23,15 @@ class QuizActivity : AppCompatActivity() {
         Log.d(LOG_TAG, "onCreate() called")
         setContentView(R.layout.activity_quiz)
 
-//        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
-//        quizViewModel.currentQuestionIndex = currentIndex
-
         val factory = QuizViewModelFactory()
         quizViewModel = ViewModelProvider(this@QuizActivity, factory)
             .get(QuizViewModel::class.java)
+
+        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
+        quizViewModel.currentQuestionIndex = currentIndex
+
+        val currentScore = savedInstanceState?.getInt(KEY_SCORE, 0) ?: 0
+        quizViewModel.score = currentScore
 
         scoreTextView = findViewById( R.id.score_text_view )
         questionTextView = findViewById( R.id.question_text_view)
@@ -88,11 +92,12 @@ class QuizActivity : AppCompatActivity() {
         super.onPause()
     }
 
-//    override fun onSaveInstanceState(savedInstanceState: Bundle) {
-//        super.onSaveInstanceState(savedInstanceState)
-//        Log.i(LOG_TAG, "onSaveInstanceState")
-//        savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentQuestionIndex)
-//    }
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        Log.i(LOG_TAG, "onSaveInstanceState")
+        savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentQuestionIndex)
+        savedInstanceState.putInt(KEY_SCORE, quizViewModel.score)
+    }
 
     override fun onStop() {
         Log.d(LOG_TAG, "onStop() called")

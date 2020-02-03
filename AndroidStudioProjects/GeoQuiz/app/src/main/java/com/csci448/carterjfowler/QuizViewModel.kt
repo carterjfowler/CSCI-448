@@ -7,7 +7,7 @@ private const val TAG = "QuizViewModel"
 
 class QuizViewModel : ViewModel() {
     private val questionBank: MutableList<Question> = mutableListOf()
-    private var score = 0
+    public var score = 0
     public var currentQuestionIndex = 0
 
     init {
