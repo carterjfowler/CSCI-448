@@ -1,15 +1,26 @@
 package com.csci448.carterjfowler
 
-object QuizMaster {
+import android.util.Log
+import androidx.lifecycle.ViewModel
+
+private const val TAG = "QuizViewModel"
+
+class QuizViewModel : ViewModel() {
     private val questionBank: MutableList<Question> = mutableListOf()
     private var score = 0
-    private var currentQuestionIndex = 0;
+    public var currentQuestionIndex = 0
 
     init {
+        Log.d(TAG, "ViewModel instance created")
         questionBank.add( Question(R.string.question1, false) )
         questionBank.add( Question(R.string.question2, true) )
         questionBank.add( Question(R.string.question3, true) )
         questionBank.add( Question(R.string.question4, false) )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.d(TAG, "ViewModel instance about to be destroyed")
     }
 
     private val currentQuestion: Question
