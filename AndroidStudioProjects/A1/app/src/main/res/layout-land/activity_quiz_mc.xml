@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
+    <!-- Nested Views Go Here -->
+    <LinearLayout
+        android:id="@+id/mc_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <!-- Need to figure out the syntax for the layout, this is going to take a bit-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="Score:" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/score_text_view"
+                tools:text="#"
+                android:textSize="24dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/question_text_view"
+                tools:text = "Question Text will display here"
+                app:autoSizeTextType="uniform"
+                android:layout_weight="1"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="3">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/option"
+                    android:layout_margin="5dp"
+                    tools:text = "Option A"
+                    android:id="@+id/button_a"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/False"
+                    android:layout_weight="1"
+                    android:background="@color/option"
+                    android:layout_margin="5dp"
+                    tools:text = "Option B"
+                    android:id="@+id/button_b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/True"
+                    android:layout_weight="1"
+                    android:background="@color/option"
+                    android:layout_margin="5dp"
+                    tools:text = "Option C"
+                    android:id="@+id/button_c"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/False"
+                    android:layout_weight="1"
+                    android:background="@color/option"
+                    android:layout_margin="5dp"
+                    tools:text = "Option D"
+                    android:id="@+id/button_d"/>
+            </LinearLayout>
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Previous"
+                android:background="@color/navButton"
+                android:id="@+id/previous_button"
+                android:layout_gravity="start"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cheat_button"
+                android:id="@+id/cheat_button"
+                android:layout_gravity="center"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Next"
+                android:background="@color/navButton"
+                android:id="@+id/next_button"
+                android:layout_gravity="end"/>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

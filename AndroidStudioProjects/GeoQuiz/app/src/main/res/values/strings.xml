@@ -11,4 +11,9 @@
     <string name="question4">Carter Fowler is from Denver, CO.</string>
     <string name="correct_toast">Your knowledge is undoubtedly top notch!</string>
     <string name="incorrect_toast">You must consult the elders for additional training.</string>
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="Cheat_button">Cheat!</string>
+    <string name="judgement_toast">Cheating is wrong.</string>
+
 </resources>

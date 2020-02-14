@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/warning_text"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:layout_weight="2"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_answer_button"
+        android:layout_gravity="center"
+        android:textSize="24dp"
+        android:background="@color/navButton"
+        android:id="@+id/show_answer_button"
+        android:padding="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The Answer is"
+        android:textSize="24dp"
+        android:gravity="center"
+
+        android:layout_weight="2"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer_text_view"
+        tools:text="Answer"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:visibility="invisible"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>

@@ -42,6 +42,8 @@ class QuizViewModel : ViewModel() {
         }
     }
 
+    fun getCurrentAnswer() = currentQuestion.isAnswerTrue
+
     fun moveToNextQuestion() {
         if (currentQuestionIndex < questionBank.size - 1) {
             ++currentQuestionIndex

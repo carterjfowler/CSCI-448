@@ -1,5 +1,7 @@
 package com.csci448.carterjfowler
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 private const val LOG_TAG = "448.QuizActivity"
 private const val KEY_INDEX = "index"
 private const val KEY_SCORE = "score"
+private const val REQUEST_CODE_CHEAT = 0
+private const val KEY_CHEAT = "cheat"
 
 class QuizActivity : AppCompatActivity() {
 
@@ -18,10 +22,12 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var scoreTextView: TextView
     private lateinit var questionTextView: TextView
 
+    private var didCheat = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(LOG_TAG, "onCreate() called")
-        setContentView(R.layout.activity_quiz)
+        setContentView(R.layout.activity_quiz_tf)
 
         val factory = QuizViewModelFactory()
         quizViewModel = ViewModelProvider(this@QuizActivity, factory)
@@ -32,6 +38,8 @@ class QuizActivity : AppCompatActivity() {
 
         val currentScore = savedInstanceState?.getInt(KEY_SCORE, 0) ?: 0
         quizViewModel.score = currentScore
+
+        didCheat = savedInstanceState?.getBoolean(KEY_CHEAT, false) ?: false
 
         scoreTextView = findViewById( R.id.score_text_view )
         questionTextView = findViewById( R.id.question_text_view)
@@ -46,6 +54,9 @@ class QuizActivity : AppCompatActivity() {
         previousButton.setOnClickListener { moveToQuestion(1)}
         nextButton.setOnClickListener { moveToQuestion(-1) }
 
+        val cheatButton: Button = findViewById( R.id.cheat_button )
+        cheatButton.setOnClickListener { launchCheat() }
+
         updateQuestion();
     }
 
@@ -59,7 +70,9 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun checkAnswer(userAnswer: Boolean) {
-        if (quizViewModel.isAnswerCorrect(userAnswer)) {
+        if (didCheat) {
+            Toast.makeText(baseContext, R.string.judgement_toast, Toast.LENGTH_SHORT).show()
+        } else if (quizViewModel.isAnswerCorrect(userAnswer)) {
             Toast.makeText(baseContext, R.string.correct_toast, Toast.LENGTH_SHORT).show()
             setCurrentScoreText()
         } else {
@@ -73,9 +86,26 @@ class QuizActivity : AppCompatActivity() {
         } else if (direction < 0) {
             quizViewModel.moveToPreviousQuestion()
         }
+        didCheat = false
         updateQuestion()
     }
 
+    private fun launchCheat() {
+        val intent = CheatActivity.createIntent(baseContext, quizViewModel.getCurrentAnswer() )
+        startActivityForResult(intent, REQUEST_CODE_CHEAT)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_CODE_CHEAT) {
+                if (data != null) {
+                    didCheat = CheatActivity.didUserCheat(data)
+                }
+            }
+        }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -97,6 +127,7 @@ class QuizActivity : AppCompatActivity() {
         Log.i(LOG_TAG, "onSaveInstanceState")
         savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentQuestionIndex)
         savedInstanceState.putInt(KEY_SCORE, quizViewModel.score)
+        savedInstanceState.putBoolean(KEY_CHEAT, didCheat)
     }
 
     override fun onStop() {
