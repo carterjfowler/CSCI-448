@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">carterjfowler_A1</string>
+    <string name="score">Score:</string>
+    <string name="frTextHint">Enter one word answer here</string>
+    <string name="True">True</string>
+    <string name="False">False</string>
+    <string name="Previous">Previous</string>
+    <string name="Next">Next</string>
+    <string name="Submit">Submit</string>
+    <string name="question1">Colorado School of Mines is located in South Bend, IN.</string>
+    <string name="question2">Blaster is the mascot of Mines.</string>
+    <string name="question3">Mines is near the Coors Brewery.</string>
+    <string name="question4">Carter Fowler is from Denver, CO.</string>
+    <string name="correct_toast">Your knowledge is undoubtedly top notch!</string>
+    <string name="incorrect_toast">You must consult the elders for additional training.</string>
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="Cheat_button">Cheat!</string>
+    <string name="judgement_toast">Cheating is wrong.</string>
+    <string name="question5">What is Mobile Application Development listed as?</string>
+    <string name="q5_A">A: CSCI 403</string>
+    <string name="q5_B">B: CSCI 448</string>
+    <string name="q5_C">C: HASS 433</string>
+    <string name="q5_D">D: CSCI 370</string>
+    <string name="question6">What are the initials of CSM\'s President?</string>
+    <string name="attemptedAlready">You have already answered this question.</string>
+    <string name="cheatLimit">You can\'t cheat more than 3 times. Cheaters never prosper!!</string>
+
+</resources>
