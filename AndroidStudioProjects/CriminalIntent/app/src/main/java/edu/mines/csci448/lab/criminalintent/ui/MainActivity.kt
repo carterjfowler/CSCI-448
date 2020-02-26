@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import edu.mines.csci448.lab.criminalintent.R
+import edu.mines.csci448.lab.criminalintent.ui.detail.CrimeDetailFragment
+import edu.mines.csci448.lab.criminalintent.ui.list.CrimeListFragment
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
 
     private val logTag = "448.MainActivity"
 
@@ -15,6 +18,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // TODO 2 create fragment transaction
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if(currentFragment == null ) {
+            val fragment = CrimeListFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit()
+        }
     }
 
     override fun onStart() {
@@ -40,5 +51,10 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         Log.d(logTag, "onDestroy() called")
         super.onDestroy()
+    }
+
+    override fun onCrimeSelected(crimeId: UUID) {
+        val fragment = CrimeDetailFragment.newInstance(crimeId)
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
     }
 }
