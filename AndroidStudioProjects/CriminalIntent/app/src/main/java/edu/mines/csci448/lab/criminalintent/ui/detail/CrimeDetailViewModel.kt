@@ -23,4 +23,8 @@ class CrimeDetailViewModel(private val crimeRepository: CrimeRepository) : ViewM
     fun saveCrime(crime: Crime) {
         crimeRepository.updateCrime(crime)
     }
+
+    fun removeCrime(crime: Crime) {
+        crimeRepository.deleteCrime(crime)
+    }
 }

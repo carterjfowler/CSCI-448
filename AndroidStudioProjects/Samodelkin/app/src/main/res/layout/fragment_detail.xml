@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/name_label"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+
+        <TextView android:id="@+id/name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            tools:text="Madrigal"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/race_label"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+
+        <TextView android:id="@+id/race_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            tools:text="Elf"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/stats_label"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
+                android:paddingTop="8dp"
+                android:text="@string/wis_label"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/wisdom_text_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:gravity="start"
+                android:layout_marginEnd="8dp"
+                android:textSize="24sp"
+                tools:text="16"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
+                android:paddingTop="8dp"
+                android:text="@string/str_label"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/strength_text_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:gravity="start"
+                android:layout_marginEnd="8dp"
+                android:textSize="24sp"
+                tools:text="16"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
+                android:paddingTop="8dp"
+                android:text="@string/dex_label"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/dexterity_text_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:gravity="start"
+                android:textSize="24sp"
+                tools:text="16"/>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

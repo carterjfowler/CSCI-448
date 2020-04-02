@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="keys">
+        <item>1_player</item>
+        <item>2_player</item>
+    </string-array>
+    <string-array name="values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

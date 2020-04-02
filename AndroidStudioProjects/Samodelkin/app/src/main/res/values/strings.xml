@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Samodelkin</string>
+
+    <string name="new_character_label">New Character</string>
+    <string name="delete_character_label">Delete Character</string>
+    <string name="confirm_delete">Confirm Delete?</string>
+    <string name="confirm_delete_message">Are you sure you wish to delete this character?
+
+    %1$s</string>
+
+    <string name="name_label">name</string>
+    <string name="race_label">race</string>
+    <string name="stats_label">stats</string>
+    <string name="str_label">strength</string>
+    <string name="str_label_short">s</string>
+    <string name="wis_label">wisdom</string>
+    <string name="wis_label_short">w</string>
+    <string name="dex_label">dexterity</string>
+    <string name="dex_label_short">d</string>
+    <string name="gen_label">Generate Random Character</string>
+    <string name="api_label">Request Character from Web</string>
+    <string name="save_label">Save Character to Codex</string>
+
+    <string name="internet_reason">"Turn on network connectivity to generate characters of lore.</string>
+</resources>

@@ -25,6 +25,12 @@ class CrimeRepository(private val crimeDao: CrimeDao) {
         }
     }
 
+    fun deleteCrime(crime: Crime) {
+        executor.execute {
+            crimeDao.deleteCrime(crime)
+        }
+    }
+
     companion object {
         private var instance: CrimeRepository? = null
         fun getInstance(context: Context): CrimeRepository? {

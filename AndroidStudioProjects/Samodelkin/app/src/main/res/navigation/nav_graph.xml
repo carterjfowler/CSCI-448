@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/characterListFragment">
+
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="edu.mines.csci448.lab.samodelkin.ui.list.CharacterListFragment"
+        android:label="List of Characters"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetailFragment2"
+            app:destination="@id/characterDetailFragment" />
+        <action
+            android:id="@+id/action_characterListFragment_to_generateCharacterFragment"
+            app:destination="@id/generateCharacterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="edu.mines.csci448.lab.samodelkin.ui.detail.CharacterDetailFragment"
+        android:label="Character Details"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/action_characterDetailFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment"
+            app:popUpTo="@+id/characterListFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="characterId"
+            app:argType="java.util.UUID" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateCharacterFragment"
+        android:name="edu.mines.csci448.lab.samodelkin.ui.generate.GenerateCharacterFragment"
+        android:label="Generate New Character"
+        tools:layout="@layout/fragment_new_character">
+        <action
+            android:id="@+id/action_generateCharacterFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment"
+            app:popUpTo="@+id/characterListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

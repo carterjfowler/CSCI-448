@@ -1,10 +1,7 @@
 package edu.mines.csci448.lab.criminalintent.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import java.util.*
 
 @Dao
@@ -20,4 +17,7 @@ interface CrimeDao {
 
     @Insert
     fun insertCrime(crime: Crime)
+
+    @Delete
+    fun deleteCrime(crime: Crime)
 }
