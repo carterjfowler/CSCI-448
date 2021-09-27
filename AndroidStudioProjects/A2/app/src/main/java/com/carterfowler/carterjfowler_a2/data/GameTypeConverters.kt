@@ -16,5 +16,4 @@ class GameTypeConverters {
             Date(it)
         }
     }
-
 }

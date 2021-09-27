@@ -4,23 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carterfowler.carterjfowler_a2.R
 import com.carterfowler.carterjfowler_a2.data.Game
+import kotlin.system.exitProcess
 
 class GameListFragment : Fragment() {
-    interface Callbacks {
-        fun onNewGameSelectedinHist()
-        fun onSettingsSelectedinHist()
-        fun onExitSelectedinHist()
-    }
-
-    private var callbacks: Callbacks? = null
 
     private val logTag = "448.HistListFrag"
     private lateinit var gameListViewModel: GameListViewModel
@@ -30,7 +24,6 @@ class GameListFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(logTag, "onAttach() called")
-        callbacks = context as Callbacks?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,11 +105,9 @@ class GameListFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         Log.d(logTag, "onDetach() called")
-        callbacks = null
     }
 
     private fun updateUI(games: List<Game>) {
-//        val crimes = crimeListViewModel.crimeListLiveData
         adapter = GameListAdapter(games)
         gameRecyclerView.adapter = adapter
     }
@@ -125,17 +116,17 @@ class GameListFragment : Fragment() {
         Log.d(logTag, "onOptionsItemSelected() called")
         return when(item.itemId) {
             R.id.new_game -> {
-                Toast.makeText(context, "New game will launch", Toast.LENGTH_SHORT).show()
-                callbacks?.onNewGameSelectedinHist()
+                val action = GameListFragmentDirections.actionGameListFragmentToGameFragment()
+                findNavController().navigate(action)
                 true
             }
             R.id.exit -> {
-                Toast.makeText(context, "Game will exit", Toast.LENGTH_SHORT).show()
-                callbacks?.onExitSelectedinHist()
+                exitProcess(1)
                 true
             }
             R.id.settings -> {
-                callbacks?.onSettingsSelectedinHist()
+                val action = GameListFragmentDirections.actionGameListFragmentToPreferencesFragment()
+                findNavController().navigate(action)
                 true
             }
             else -> super.onOptionsItemSelected(item)

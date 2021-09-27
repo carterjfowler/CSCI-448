@@ -4,25 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import kotlin.system.exitProcess
 
 class HomePageFragment : Fragment() {
-    interface Callbacks {
-        fun onSettingsSelectedinHome()
-        fun onHistorySelecetedinHome()
-        fun onNewGameSelectedinHome()
-        fun onExitSelectedinHome()
-    }
-
-    private var callbacks: Callbacks? = null
 
     private val logTag = "448.HomePageFrag"
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(logTag, "onAttach() called")
-        callbacks = context as Callbacks?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,13 +27,11 @@ class HomePageFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         Log.d(logTag, "onCreateOptionsMenu() called")
         inflater.inflate(R.menu.home_page, menu)
-        //Need to figure out how to turn off the up button
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d(logTag, "onCreateView() called")
         val view = inflater.inflate(R.layout.home_page, container, false)
-
 
         return view
     }
@@ -89,29 +79,28 @@ class HomePageFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         Log.d(logTag, "onDetach() called")
-        callbacks = null
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.d(logTag, "onOptionsItemSelected() called")
         return when(item.itemId) {
             R.id.new_game -> {
-                Toast.makeText(context, "New game will launch", Toast.LENGTH_SHORT).show()
-                callbacks?.onNewGameSelectedinHome()
+                val action = HomePageFragmentDirections.actionHomePageFragmentToGameFragment()
+                findNavController().navigate(action)
                 true
             }
             R.id.exit -> {
-                Toast.makeText(context, "Game will exit", Toast.LENGTH_SHORT).show()
-                callbacks?.onExitSelectedinHome()
+                exitProcess(1)
                 true
             }
             R.id.history -> {
-                Toast.makeText(context, "History page will launch", Toast.LENGTH_SHORT).show()
-                callbacks?.onHistorySelecetedinHome()
+                val action = HomePageFragmentDirections.actionHomePageFragmentToGameListFragment()
+                findNavController().navigate(action)
                 true
             }
             R.id.settings -> {
-                callbacks?.onSettingsSelectedinHome()
+                val action = HomePageFragmentDirections.actionHomePageFragmentToPreferencesFragment()
+                findNavController().navigate(action)
                 true
             }
             else -> super.onOptionsItemSelected(item)

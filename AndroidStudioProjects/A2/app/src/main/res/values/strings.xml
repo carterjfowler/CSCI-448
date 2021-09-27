@@ -17,5 +17,13 @@
     <string name="sys_settings">System Settings</string>
     <string name="first_player">Player 1 goes first</string>
     <string name="player_one_piece">Player 1 plays as X</string>
+    <string name="game_result_tie">It\'s a tie!</string>
+    <string name="game_result_player1">Player 1 won!</string>
+    <string name="game_result_player2">Player 2 won!</string>
+    <string name="game_result_computer">The computer won.</string>
+    <string name="game_turn_1">It\'s Player 1\'s turn</string>
+    <string name="game_turn_2">It\'s Player 2\'s turn</string>
+    <string name="play_again_button">Play again</string>
+    <string name="return_button">Return</string>
 
 </resources>

@@ -5,10 +5,8 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-data class Game(@PrimaryKey val gameName: String = "",
-    var gameNum: Int,
-    var winner: String = "",
+data class Game(var winner: String = "",
     var loser: String = "",
     var tie: Boolean,
     var piece: Char,
-    var time: Date = Date())
+    @PrimaryKey var time: Date = Date())

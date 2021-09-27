@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_map">
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.carterjfowler.carterjfowler_a3.Map.MapFragment"
+        android:label="Map">
+        <argument
+            android:name="longitude"
+            android:defaultValue="-999.0"
+            app:argType="float" />
+        <argument
+            android:name="latitude"
+            android:defaultValue="-999.0"
+            app:argType="float" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.carterjfowler.carterjfowler_a3.History.HistoryListFragment"
+        android:label="HistoryListFragment" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.carterjfowler.carterjfowler_a3.PreferencesFragment"
+        android:label="PreferencesFragment" />
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.carterjfowler.carterjfowler_a3.AboutFragment"
+        android:label="AboutFragment" />
+</navigation>

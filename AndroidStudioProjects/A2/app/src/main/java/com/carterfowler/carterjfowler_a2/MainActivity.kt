@@ -1,26 +1,41 @@
 package com.carterfowler.carterjfowler_a2
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.carterfowler.carterjfowler_a2.history.GameListFragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.preference.PreferenceManager
 
-class MainActivity : AppCompatActivity(), HomePageFragment.Callbacks, GameListFragment.Callbacks {
+class MainActivity : AppCompatActivity() {
 
     private val logTag = "448.MainActivity"
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if(currentFragment == null) {
-            val fragment = HomePageFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container, fragment)
-                .commit()
-        }
+    private lateinit var prefManager : SharedPreferences
+
+    fun restart() {
+        finish()
+        startActivity(intent)
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        prefManager = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val theme = prefManager.getString("theme", "Light")
+        if (theme.equals("Blue")) {
+            setTheme(R.style.BlueTheme)
+        } else if (theme.equals("Dark")) {
+            setTheme(R.style.DarkTheme)
+        } else {
+            setTheme(R.style.AppTheme)
+        }
+        super.onCreate(savedInstanceState)
+        Log.d(logTag, "onCreate() called")
+        setContentView(R.layout.activity_main)
+        NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.nav_host_fragment))
+    }
+
+    override fun onSupportNavigateUp(): Boolean = findNavController(R.id.nav_host_fragment).navigateUp() || super.onSupportNavigateUp()
 
     override fun onStart() {
         super.onStart()
@@ -45,40 +60,5 @@ class MainActivity : AppCompatActivity(), HomePageFragment.Callbacks, GameListFr
     override fun onDestroy() {
         Log.d(logTag, "onDestroy() called")
         super.onDestroy()
-    }
-
-    override fun onHistorySelecetedinHome() {
-        val fragment = GameListFragment()
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
-    }
-
-    override fun onExitSelectedinHome() {
-        //TODO Figure out and add exit code, not sure what Paone meant for this to do
-    }
-
-    override fun onNewGameSelectedinHome() {
-        //TODO Add code to launch new game
-    }
-
-    override fun onSettingsSelectedinHome() {
-        val fragment = PreferencesFragment()
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
-    }
-
-
-    override fun onExitSelectedinHist() {
-        //TODO Figure out and add exit code, not sure what Paone meant for this to do
-    }
-
-    override fun onNewGameSelectedinHist() {
-        //TODO Add code to launch new game
-    }
-
-    override fun onSettingsSelectedinHist() {
-        val fragment = PreferencesFragment()
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
     }
 }

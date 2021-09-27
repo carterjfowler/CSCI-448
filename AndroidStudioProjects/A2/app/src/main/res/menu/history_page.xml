@@ -5,24 +5,47 @@
         android:id="@+id/new_game"
         android:icon="@drawable/ic_new_game"
         android:title="@string/new_game"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="ifRoom|withText" />
+
+
+<!--    Could not get these items to work, but they could be useful in the future, so I'm just commenting them out-->
 <!--    <item-->
 <!--        android:id="@+id/filter"-->
-<!--        android:icon="@drawable/ic_filter"-->
 <!--        android:title="@string/filter"-->
+<!--        android:icon="@drawable/ic_filter"-->
 <!--        app:showAsAction="ifRoom|withText">-->
-
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/show_wins"-->
+<!--                android:checkable="true"-->
+<!--                android:enabled="true"-->
+<!--                android:title="@string/show_wins" />-->
+<!--            <item-->
+<!--                android:id="@+id/show_losses"-->
+<!--                android:checkable="true"-->
+<!--                android:enabled="true"-->
+<!--                android:title="@string/show_losses" />-->
+<!--            <item-->
+<!--                android:id="@+id/show_ties"-->
+<!--                android:checkable="true"-->
+<!--                android:enabled="true"-->
+<!--                android:title="@string/show_ties" />-->
+<!--        </menu>-->
 <!--    </item>-->
 <!--    <item-->
 <!--        android:id="@+id/sort"-->
-<!--        android:icon="@drawable/ic_sort"-->
 <!--        android:title="@string/sort"-->
+<!--        android:icon="@drawable/ic_sort"-->
 <!--        app:showAsAction="ifRoom|withText">-->
-<!--        <item-->
-<!--            android:id="@+id/date"-->
-<!--            android:title=""/>-->
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/sort_date"-->
+<!--                android:title="@string/date" />-->
+<!--            <item-->
+<!--                android:id="@+id/sort_winner"-->
+<!--                android:title="@string/winner" />-->
+<!--        </menu>-->
 <!--    </item>-->
-
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"

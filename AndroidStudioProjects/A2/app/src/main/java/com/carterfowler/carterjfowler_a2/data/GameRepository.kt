@@ -9,11 +9,15 @@ class GameRepository(private val gameDao: GameDao) {
 
     fun getGames(): LiveData<List<Game>> = gameDao.getGames()
 
-    fun getMaxNumGame(): Int = gameDao.getMaxGameNum()
-
     fun addGame(game: Game) {
         executor.execute {
             gameDao.insertGame(game)
+        }
+    }
+
+    fun deleteEntries() {
+        executor.execute {
+            gameDao.deleteEntries()
         }
     }
 

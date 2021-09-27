@@ -12,4 +12,4 @@ class CharacterListViewModelFactory(private val context: Context) : ViewModelPro
             .newInstance(SamodelkinRepository.getInstance(context))
     }
 
-}
+}a

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
@@ -8,34 +9,59 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/game_name"
+        android:id="@+id/tie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tie"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/winner_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Game Name"
+        android:text="@string/winner"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/winner"
+        android:id="@+id/winner_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:text="Winner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_name" />
+        app:layout_constraintTop_toBottomOf="@+id/winner_title" />
 
     <TextView
-        android:id="@+id/loser"
+        android:id="@+id/loser_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="Loser"
-        app:layout_constraintStart_toEndOf="@+id/winner"
-        tools:layout_editor_absoluteY="32dp" />
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/winning_piece"
+        app:layout_constraintStart_toEndOf="@+id/winner_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loser_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loser"
+        app:layout_constraintEnd_toStartOf="@+id/winning_piece"
+        app:layout_constraintStart_toEndOf="@+id/winner_name"
+        app:layout_constraintTop_toBottomOf="@+id/loser_title" />
 
     <TextView
         android:id="@+id/date"
@@ -43,8 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/winner" />
+        app:layout_constraintTop_toBottomOf="@+id/winner_name" />
 
     <ImageView
         android:id="@+id/winning_piece"

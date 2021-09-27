@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homePageFragment">
+
+    <fragment
+        android:id="@+id/gameListFragment"
+        android:name="com.carterfowler.carterjfowler_a2.history.GameListFragment"
+        android:label="History"
+        tools:layout="@layout/history_list">
+        <action
+            android:id="@+id/action_gameListFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+        <action
+            android:id="@+id/action_gameListFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="com.carterfowler.carterjfowler_a2.PreferencesFragment"
+        android:label="Settings" />
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.carterfowler.carterjfowler_a2.HomePageFragment"
+        android:label="Home"
+        tools:layout="@layout/home_page">
+        <action
+            android:id="@+id/action_homePageFragment_to_gameListFragment"
+            app:destination="@id/gameListFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.carterfowler.carterjfowler_a2.game.GameFragment"
+        android:label="Game"
+        tools:layout="@layout/game_fragment">
+        <action
+            android:id="@+id/action_gameFragment_to_homePageFragment2"
+            app:destination="@id/homePageFragment"
+            app:popUpTo="@+id/homePageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
